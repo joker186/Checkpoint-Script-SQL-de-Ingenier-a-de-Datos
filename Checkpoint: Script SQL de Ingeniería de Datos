@@ -12,20 +12,20 @@ CREATE TABLE categorias (
 );
 
 CREATE TABLE clientes (
-    id_clientes INT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
+    id_cliente INT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
-    ciudAd VARCHAR(50),
+    ciudad VARCHAR(50),
     fecha_registro DATE NOT NULL
 );
 
 CREATE TABLE productos (
     id_producto INT PRIMARY KEY,
-    nombre_producto VARCHAR(100),
+    nombre_producto VARCHAR(100) NOT NULL,
     id_categoria INT,
-    precio DECIMAL(10,2),
+    precio DECIMAL(10,2) NOT NULL,
     stock INT DEFAULT 0,
-    activo TINYINT DEFAULT 1,
+    activo SMALLINT  DEFAULT 1,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE ventas (
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
     fecha_venta DATE NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_clientes),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
