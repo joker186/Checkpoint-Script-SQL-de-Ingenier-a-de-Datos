@@ -13,7 +13,7 @@ CREATE TABLE categorias (
 
 CREATE TABLE clientes (
     id_cliente INT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
+    nombre_cliente VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
     ciudad VARCHAR(50),
     fecha_registro DATE NOT NULL
@@ -25,7 +25,7 @@ CREATE TABLE productos (
     id_categoria INT,
     precio DECIMAL(10,2) NOT NULL,
     stock INT DEFAULT 0,
-    activo SMALLINT DEFAULT 1,
+    activo SMALLINT  DEFAULT 1,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
@@ -50,6 +50,7 @@ INSERT INTO clientes VALUES (2, 'Carlos Ruiz',   'carlos@mail.com',  'Córdoba',
 INSERT INTO clientes VALUES (3, 'Ana Gómez',     'ana@mail.com',     'Rosario',      '2024-02-01');
 INSERT INTO clientes VALUES (4, 'Pedro Sanz',    'pedro@mail.com',   'Mendoza',      '2024-02-15');
 INSERT INTO clientes VALUES (5, 'Laura Torres',  'laura@mail.com',   'Tucumán',      '2024-03-01');
+INSERT INTO clientes VALUES (999, 'Lucía Gómez', 'lucia.gomez@gmail.com', 'Rosario', '2024-03-01'); 
 
 INSERT INTO productos VALUES (1, 'Laptop Pro 15',       1, 1200.00, 15, 1);
 INSERT INTO productos VALUES (2, 'Mouse Inalámbrico',   2,   28.00, 80, 1);
@@ -57,6 +58,7 @@ INSERT INTO productos VALUES (3, 'Monitor 4K 27"',      1,  450.00, 12, 1);
 INSERT INTO productos VALUES (4, 'Auriculares BT Pro',  3,  120.00, 35, 1);
 INSERT INTO productos VALUES (5, 'SSD Externo 1TB',     4,  130.00, 18, 1);
 INSERT INTO productos VALUES (6, 'Teclado Mecánico',    2,   95.00, 40, 1);
+INSERT INTO productos VALUES (999, 'Teclado Mecánico RGB', 2, 75.00, 20, 1);
 
 INSERT INTO ventas VALUES (1,  1, 1, 2, 1200.00, '2024-03-05');
 INSERT INTO ventas VALUES (2,  2, 2, 5,   28.00, '2024-03-06');
@@ -73,5 +75,7 @@ SELECT * FROM categorias;
 SELECT * FROM clientes;
 SELECT * FROM productos;
 SELECT * FROM ventas;
+
+USE VENTAS_TECH_DB;
 
 
