@@ -8,7 +8,7 @@ SELECT
     c.ciudad,
     p.id_producto,
     p.nombre_producto AS descripcion_producto,
-    p.id_categoria,
+    cat.nombre_categoria,
     v.cantidad,
     v.precio_unitario,
     (v.cantidad * v.precio_unitario) AS total_venta
@@ -16,7 +16,9 @@ FROM ventas v
 INNER JOIN clientes c 
     ON v.id_cliente = c.id_cliente
 INNER JOIN productos p 
-    ON v.id_producto = p.id_producto;
+    ON v.id_producto = p.id_producto
+INNER JOIN categorias cat
+    ON p.id_categoria = cat.id_categoria;
 
 --Consulta 2 — Clientes sin ventas (LEFT JOIN)
 SELECT 
@@ -53,4 +55,4 @@ FROM (
     WHERE fecha_venta >= '2024-03-10'
 ) AS consolidado
 GROUP BY canal
-ORDER BY canal
+ORDER BY canal;
